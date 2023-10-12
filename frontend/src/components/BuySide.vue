@@ -1,8 +1,10 @@
 <template>
+  <el-space wrap>
   <el-card class="box-card">
     <div>buy side</div>
     <div v-for="(item,index) in items" :key="index" class="text item">{{ item }}</div>
   </el-card>
+  </el-space>
 
 <!--  <button @click="printRes"> print </button>-->
 </template>

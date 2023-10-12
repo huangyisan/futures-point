@@ -14,6 +14,7 @@
 <script setup>
 import {watchEffect} from "vue";
 
+
 const props = defineProps(['sellRes'])
 
 let items = props.sellRes.split('\n');
