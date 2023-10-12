@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
+	"futures-point/pkg/buy"
+	"futures-point/pkg/sell"
 )
 
 // App struct
@@ -24,4 +26,16 @@ func (a *App) startup(ctx context.Context) {
 // Greet returns a greeting for the given name
 func (a *App) Greet(name string) string {
 	return fmt.Sprintf("Hello %s, It's show time!", name)
+}
+
+func (a *App) Calculate(price float64) (res []string) {
+
+	buyRes := buy.Exec(price)
+	sellRes := sell.Exec(price)
+	res = append(res, buyRes, sellRes)
+	fmt.Println(buyRes)
+	fmt.Println(sellRes)
+	fmt.Println(price)
+
+	return
 }
