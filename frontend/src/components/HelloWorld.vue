@@ -1,19 +1,25 @@
 <script setup>
 import {reactive} from 'vue'
 import {Calculate, Greet} from '../../wailsjs/go/main/App'
-import BuySide from "./Point.vue";
-// import SellSide from "./SellSide.vue";
-
-const data = reactive({
-  name: "",
-  resultText: "Please enter your name below 👇",
-})
+import Point from "./Point.vue";
 
 const point = reactive({
   price: 0,
-  buyRes: "",
-  sellRes: ""
+  buyData: {
+  },
+  sellData: {
+  },
 })
+
+// const pconst point = reactive({
+//   price: 0,
+//   buyRes: "",
+//   sellRes: ""
+// })oint = reactive({
+//   price: 0,
+//   buyRes: "",
+//   sellRes: ""
+// })
 
 function greet() {
   Greet(data.name).then(result => {
@@ -23,8 +29,15 @@ function greet() {
 
 function calculate() {
   Calculate(point.price).then(result => {
-    point.buyRes = result[0]
-    point.sellRes = result[1]
+    const decodeData = atob(result[0])
+    const jsonRes = JSON.parse(decodeData)
+    point.sellData =  jsonRes
+    console.log(jsonRes)
+
+    const decodeData2 = atob(result[1])
+    const jsonRes2 = JSON.parse(decodeData2)
+    point.buyData =  jsonRes2
+    console.log(jsonRes2)
   })
 }
 
@@ -51,7 +64,7 @@ function calculate() {
         <el-row class="center">
           <el-col :span="24">
             <div>
-              <BuySide :res="point.sellRes"/>
+              <Point :res="point"/>
 <!--              <el-divider direction="vertical" />-->
             </div>
           </el-col>

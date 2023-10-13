@@ -12,3 +12,24 @@ const (
 	ratio02 = 2
 	ratio01 = 1
 )
+
+type Ratio50 []float64
+type Ratio20 []float64
+type Ratio10 []float64
+type Ratio05 []float64
+type Ratio02 []float64
+type Ratio01 []float64
+
+type Data struct {
+	Ratio50 `json:"ratio50"`
+	Ratio20 `json:"ratio20"`
+	Ratio10 `json:"ratio10"`
+	Ratio05 `json:"ratio05"`
+	Ratio02 `json:"ratio02"`
+	Ratio01 `json:"ratio01"`
+}
+
+type JSONData struct {
+	Side string `json:"side"`
+	Data Data   `json:"data"`
+}

@@ -28,14 +28,14 @@ func (a *App) Greet(name string) string {
 	return fmt.Sprintf("Hello %s, It's show time!", name)
 }
 
-func (a *App) Calculate(price float64) (res []string) {
+func (a *App) Calculate(price float64) (res [][]byte) {
 
 	buyRes := buy.Exec(price)
 	sellRes := sell.Exec(price)
 	res = append(res, buyRes, sellRes)
-	fmt.Println(buyRes)
-	fmt.Println(sellRes)
-	fmt.Println(price)
+	fmt.Println(string(buyRes))
+	fmt.Println(string(sellRes))
+	//fmt.Println(price)
 
 	return
 }
