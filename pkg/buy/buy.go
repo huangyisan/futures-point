@@ -51,5 +51,5 @@ func Exec(price float64) string {
 	buyRatio05(price)
 	buyRatio02(price)
 	buyRatio01(price)
-	return fmt.Sprintf("%s%s%s%s%s%s", buyRatio50(price), buyRatio20(price), buyRatio10(price), buyRatio05(price), buyRatio02(price), buyRatio01(price))
+	return fmt.Sprintf("%s%s%s%s%s%s%s", "sell\n", buyRatio50(price), buyRatio20(price), buyRatio10(price), buyRatio05(price), buyRatio02(price), buyRatio01(price))
 }

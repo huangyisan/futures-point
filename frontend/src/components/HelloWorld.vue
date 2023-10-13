@@ -1,8 +1,8 @@
 <script setup>
 import {reactive} from 'vue'
 import {Calculate, Greet} from '../../wailsjs/go/main/App'
-import BuySide from "./BuySide.vue";
-import SellSide from "./SellSide.vue";
+import BuySide from "./Point.vue";
+// import SellSide from "./SellSide.vue";
 
 const data = reactive({
   name: "",
@@ -49,14 +49,10 @@ function calculate() {
       </el-header>
       <el-main>
         <el-row class="center">
-          <el-col :span="12">
+          <el-col :span="24">
             <div>
-              <BuySide :buyRes="point.buyRes"/>
-            </div>
-          </el-col>
-          <el-col :span="12">
-            <div>
-              <SellSide :sellRes="point.sellRes"/>
+              <BuySide :res="point.sellRes"/>
+<!--              <el-divider direction="vertical" />-->
             </div>
           </el-col>
         </el-row>
@@ -64,7 +60,6 @@ function calculate() {
 
     </el-container>
   </div>
-
 
 </template>
 
