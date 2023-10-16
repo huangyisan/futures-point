@@ -2,17 +2,19 @@
 <!--  <el-space wrap>-->
   <el-card class="box-card">
 
-    <div>{{ buySide }}</div>
+
     <el-row>
     <el-col :span="11">
-    <div v-for="(item,index) in sellItems" :key="index" class="text item">{{ item }}</div>
+      <div>{{ sellSide }}</div>
+    <div v-for="(item,index) in sellItems" :key="index" class="text item">{{index}} {{ item }}</div>
     </el-col>
       <el-col :span="2">
+
         <el-divider direction="vertical" content-position="center" />
       </el-col>
     <el-col :span="11">
-<!--      <div>{{ buySide }}</div>-->
-    <div v-for="(item,index) in props.res.buyData" :key="index" class="text item">{{ item }}</div>
+      <div>{{ buySide }}</div>
+    <div v-for="(item,index) in buyItems" :key="index" class="text item">{{index}} {{ item }}</div>
     </el-col>
     </el-row>
     <el-divider direction="horizontal" />
@@ -27,7 +29,7 @@ import {watch, ref} from "vue";
 
 const props = defineProps(['res'])
 let buyItems = ref([])
-let buySide = ref("ccc")
+let buySide = ref()
 let sellItems = ref([])
 let sellSide = ref()
 // let buyItems = props.res.buyData;
@@ -36,26 +38,20 @@ let sellSide = ref()
 // let sellSide = ref(props.res.sellData.side)
 // let tmp = ref()
 function printSide() {
-  console.log(buyItems)
-  console.log(buyItems[0])
+  // console.log(buyItems.value)
+  // console.log(props.res.sellData)
+
 }
 
-
 watch(() => props.res.buyData, (newVal, oldVal) => {
-  buySide = newVal.side
-  buyItems = newVal.data
-  console.log(buySide)
-  console.log(buyItems)
-  // tmp = newVal.split('\n');
-  // side = tmp[0]
-  // buyItems = tmp.slice(1);
-
+  buySide.value = newVal.side
+  buyItems.value = newVal.data
 })
 
 watch(() => props.res.sellData, (newVal, oldVal) => {
-  // tmp = newVal.split('\n');
-  // side = tmp[0]
-  // sellItems = tmp.slice(1);
+  console.log(`new: ${newVal.side}`)
+  sellSide.value = newVal.side
+  sellItems.value = newVal.data
 })
 
 
