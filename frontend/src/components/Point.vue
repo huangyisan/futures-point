@@ -1,22 +1,32 @@
 <template>
 <!--  <el-space wrap>-->
   <el-card class="box-card">
-
-
     <el-row>
-    <el-col :span="11">
-      <el-table :data="buyTableData" style="width: 100%">
+    <el-col :span="12">
+      <el-table
+          :data="buyTableData"
+          height="250"
+          style="width: 100%"
+          :row-class-name="tableRowClassName"
+          stripe
+      >
         <el-table-column prop="direction" label="方向" />
         <el-table-column prop="ratio" label="比例" />
         <el-table-column prop="price" label="价格" />
       </el-table>
     </el-col>
-      <el-col :span="2">
-
-        <el-divider direction="vertical" content-position="center" />
-      </el-col>
-    <el-col :span="11">
-      <el-table :data="sellTableData" style="width: 100%">
+<!--      <el-col :span="2">-->
+<!--        <el-divider direction="vertical" content-position="center" />-->
+<!--      </el-col>-->
+    <el-col :span="12">
+      <el-table
+          :data="sellTableData"
+          height="250"
+          style="width: 100%"
+          max-height="250"
+          :row-class-name="tableRowClassName"
+          stripe
+      >
         <el-table-column prop="direction" label="方向" />
         <el-table-column prop="ratio" label="比例" />
         <el-table-column prop="price" label="价格" />
@@ -70,7 +80,7 @@ let buyTableData = ref([
 let sellTableData = ref([
   {
     "direction": "buy",
-    "ratio": "50x",
+    "ratio": "ratio50",
     "price": "1"
   },
   {
@@ -129,6 +139,19 @@ const makeTable = (tableData, direction, items) => {
   }
 }
 
+
+function tableRowClassName() {
+  return "warning-row"
+}
+// const tableRowClassName = ({row, rowIndex}) => {
+//   if (row.ratio === "ratio50") {
+//     return "warning-row"
+//   } else {
+//     return "success-row"
+//   }
+// }
+
+
 watch(() => props.res.buyData, (newVal, oldVal) => {
   buySide.value = newVal.side
   buyItems.value = newVal.data
@@ -157,4 +180,11 @@ watch(() => props.res.sellData, (newVal, oldVal) => {
 /*.box-card {*/
 /*  width: 480px;*/
 /*}*/
+
+.el-table .warning-row {
+  --el-table-tr-bg-color: var(--el-color-warning-light-9);
+}
+.el-table .success-row {
+  --el-table-tr-bg-color: var(--el-color-success-light-9);
+}
 </style>

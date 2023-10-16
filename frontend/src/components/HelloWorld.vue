@@ -65,7 +65,6 @@ function calculate() {
           <el-col :span="24">
             <div>
               <Point :res="point"/>
-<!--              <el-divider direction="vertical" />-->
             </div>
           </el-col>
         </el-row>
