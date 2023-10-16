@@ -2,7 +2,7 @@
 <!--  <el-space wrap>-->
   <el-card class="box-card">
     <el-row>
-    <el-col :span="12">
+    <el-col :span="11">
       <el-table
           :data="buyTableData"
           height="250"
@@ -10,19 +10,15 @@
           :row-class-name="tableRowClassName"
           stripe
       >
-        <el-table-column prop="direction" label="方向" />
-        <el-table-column
-            prop="ratio"
-            label="比例"
-            :filters="ratios"
-        />
+        <el-table-column prop="ratio" label="比例" fixed/>
         <el-table-column prop="price" label="价格" />
+        <el-table-column prop="direction" label="方向" />
       </el-table>
     </el-col>
-<!--      <el-col :span="2">-->
-<!--        <el-divider direction="vertical" content-position="center" />-->
-<!--      </el-col>-->
-    <el-col :span="12">
+      <el-col :span="2">
+        <el-divider direction="vertical" content-position="center" style="height: 100%"/>
+      </el-col>
+    <el-col :span="11">
       <el-table
           :data="sellTableData"
           height="250"
@@ -31,9 +27,10 @@
           :row-class-name="tableRowClassName"
           stripe
       >
-        <el-table-column prop="direction" label="方向" />
-        <el-table-column prop="ratio" label="比例" />
+
+        <el-table-column prop="ratio" label="比例" fixed/>
         <el-table-column prop="price" label="价格" />
+        <el-table-column prop="direction" label="方向" />
       </el-table>
     </el-col>
     </el-row>
@@ -45,7 +42,6 @@
 <script setup>
 import {watch, ref} from "vue";
 const props = defineProps(['res'])
-let ratios = ref([])
 let buyItems = ref([])
 let buySide = ref()
 let sellItems = ref([])
@@ -82,15 +78,15 @@ const makeTable = (tableData, direction, items) => {
   }
 }
 
-const ratioFilter = () => {
-  for (let buyItemsKey in buyItems.value) {
-    // console.log(buyItemsKey)
-    if (ratios.value.indexOf(buyItemsKey) === -1) {
-      ratios.value.push(buyItemsKey)
-    }
-  }
-  console.log(ratios)
-}
+// const ratioFilter = () => {
+//   for (let buyItemsKey in buyItems.value) {
+//     // console.log(buyItemsKey)
+//     if (ratios.value.indexOf(buyItemsKey) === -1) {
+//       ratios.value.push(buyItemsKey)
+//     }
+//   }
+//   console.log(ratios)
+// }
 
 function tableRowClassName() {
   return "warning-row"
