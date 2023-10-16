@@ -106,12 +106,8 @@ function makeTable(tableData,items,direction) {
 watch(() => props.res.buyData, (newVal, oldVal) => {
   buySide.value = newVal.side
   buyItems.value = newVal.data
-  // makeTable(buyTableData, buyItems, "buy")
   buyTableData.value = []
   for (let buyItemsKey in buyItems.value) {
-    console.log(buyItemsKey)
-
-    console.log(buyItems.value[buyItemsKey].length)
     for (let i = 0; i < buyItems.value[buyItemsKey].length; i++) {
 
       buyTableData.value.push({
