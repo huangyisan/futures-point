@@ -1,5 +1,5 @@
 <script setup>
-import {reactive} from 'vue'
+import {reactive, ref} from 'vue'
 import {Calculate, Greet} from '../../wailsjs/go/main/App'
 import Point from "./Point.vue";
 
@@ -10,6 +10,8 @@ const point = reactive({
   sellData: {
   },
 })
+
+let display = ref(false)
 
 // const pconst point = reactive({
 //   price: 0,
@@ -39,6 +41,7 @@ function calculate() {
     point.buyData =  jsonRes2
     console.log(jsonRes2)
   })
+  display.value = true
 }
 
 </script>
@@ -46,14 +49,12 @@ function calculate() {
 <template>
   <div class="common-layout">
     <el-container>
-
       <el-header>
         <el-row class="center">
           <el-col :span="24">
             <!--        <div id="result">当前价格</div>-->
             <!--        <div id="input" class="input-box">-->
             <el-input-number v-model="point.price" :min="0" type="number"/>
-            <!--          <input id="name" v-model="point.price" autocomplete="off" class="input" type="number"/>-->
             <el-button type="primary" @click="calculate">计算</el-button>
             <!--          <button class="btn" @click="calculate">计算</button>-->
             <!--        </div>-->
@@ -63,8 +64,11 @@ function calculate() {
       <el-main>
         <el-row class="center">
           <el-col :span="24">
-            <div>
+            <div v-if="display">
               <Point :res="point"/>
+            </div>
+            <div v-else>
+              <el-empty description="No data" />
             </div>
           </el-col>
         </el-row>

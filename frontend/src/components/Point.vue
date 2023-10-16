@@ -11,7 +11,11 @@
           stripe
       >
         <el-table-column prop="direction" label="方向" />
-        <el-table-column prop="ratio" label="比例" />
+        <el-table-column
+            prop="ratio"
+            label="比例"
+            :filters="ratios"
+        />
         <el-table-column prop="price" label="价格" />
       </el-table>
     </el-col>
@@ -41,74 +45,13 @@
 <script setup>
 import {watch, ref} from "vue";
 const props = defineProps(['res'])
+let ratios = ref([])
 let buyItems = ref([])
 let buySide = ref()
 let sellItems = ref([])
 let sellSide = ref()
-let buyTableData = ref([
-  {
-    "direction": "buy",
-    "ratio": "50x",
-    "price": "1"
-  },
-  {
-    "direction": "buy",
-    "ratio": "50x",
-    "price": "10"
-  },
-  {
-    "direction": "buy",
-    "ratio": "50x",
-    "price": "100"
-  },
-  {
-    "direction": "buy",
-    "ratio": "20x",
-    "price": "2"
-  },
-  {
-    "direction": "buy",
-    "ratio": "20x",
-    "price": "20"
-  },
-  {
-    "direction": "buy",
-    "ratio": "20x",
-    "price": "200"
-  },
-])
-let sellTableData = ref([
-  {
-    "direction": "buy",
-    "ratio": "ratio50",
-    "price": "1"
-  },
-  {
-    "direction": "buy",
-    "ratio": "50x",
-    "price": "10"
-  },
-  {
-    "direction": "buy",
-    "ratio": "50x",
-    "price": "100"
-  },
-  {
-    "direction": "buy",
-    "ratio": "20x",
-    "price": "2"
-  },
-  {
-    "direction": "buy",
-    "ratio": "20x",
-    "price": "20"
-  },
-  {
-    "direction": "buy",
-    "ratio": "20x",
-    "price": "200"
-  },
-])
+let buyTableData = ref()
+let sellTableData = ref([])
 
 function printSide() {
   for (let buyItemsKey in buyItems.value) {
@@ -139,6 +82,15 @@ const makeTable = (tableData, direction, items) => {
   }
 }
 
+const ratioFilter = () => {
+  for (let buyItemsKey in buyItems.value) {
+    // console.log(buyItemsKey)
+    if (ratios.value.indexOf(buyItemsKey) === -1) {
+      ratios.value.push(buyItemsKey)
+    }
+  }
+  console.log(ratios)
+}
 
 function tableRowClassName() {
   return "warning-row"
