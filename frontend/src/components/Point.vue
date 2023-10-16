@@ -1,6 +1,6 @@
 <template>
 <!--  <el-space wrap>-->
-  <el-card class="box-card">
+<!--  <el-card class="box-card">-->
     <el-row>
     <el-col :span="11">
       <el-table
@@ -9,6 +9,7 @@
           style="width: 100%"
           :row-class-name="tableRowClassName"
           stripe
+          size="small"
       >
         <el-table-column prop="ratio" label="比例" fixed/>
         <el-table-column prop="price" label="价格" />
@@ -26,6 +27,7 @@
           max-height="250"
           :row-class-name="tableRowClassName"
           stripe
+          size="small"
       >
 
         <el-table-column prop="ratio" label="比例" fixed/>
@@ -36,7 +38,7 @@
     </el-row>
     <el-divider direction="horizontal" />
     <button @click="printSide">1111</button>
-  </el-card>
+<!--  </el-card>-->
 </template>
 
 <script setup>

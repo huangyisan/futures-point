@@ -52,12 +52,7 @@ function calculate() {
       <el-header>
         <el-row class="center">
           <el-col :span="24">
-            <!--        <div id="result">当前价格</div>-->
-            <!--        <div id="input" class="input-box">-->
-            <el-input-number v-model="point.price" :min="0" type="number"/>
-            <el-button type="primary" @click="calculate">计算</el-button>
-            <!--          <button class="btn" @click="calculate">计算</button>-->
-            <!--        </div>-->
+
           </el-col>
         </el-row>
       </el-header>
@@ -70,7 +65,10 @@ function calculate() {
             <div v-else>
               <el-empty description="No data" />
             </div>
+            <el-input-number v-model="point.price" placeholder="请输入价格" :min="0" type="number"/>
+            <el-button type="primary" @click="calculate">计算</el-button>
           </el-col>
+
         </el-row>
       </el-main>
 
