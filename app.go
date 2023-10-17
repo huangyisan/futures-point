@@ -35,7 +35,6 @@ func (a *App) Calculate(price float64) (res [][]byte) {
 	res = append(res, buyRes, sellRes)
 	fmt.Println(string(buyRes))
 	fmt.Println(string(sellRes))
-	//fmt.Println(price)
 
 	return
 }

@@ -50,7 +50,7 @@ function calculate() {
   <div class="common-layout">
     <el-container>
       <el-main>
-        <el-row class="center">
+        <el-row class="center" :gutter="10">
           <el-col :span="24">
             <div v-if="display">
               <Point :res="point"/>
@@ -58,13 +58,16 @@ function calculate() {
             <div v-else>
               <el-empty description="No data" />
             </div>
-            <el-input-number v-model="point.price" placeholder="请输入价格" :min="0" type="number"/>
-            <el-button type="primary" @click="calculate">计算</el-button>
+            <el-divider direction="horizontal" />
           </el-col>
-
+          <el-col :span="1" :offset="18">
+            <el-input-number v-model="point.price" placeholder="请输入价格" :min="0" type="number" size="small"/>
+          </el-col>
+          <el-col :span="1" :offset="2">
+            <el-button type="primary" @click="calculate" size="small">计算</el-button>
+          </el-col>
         </el-row>
       </el-main>
-
     </el-container>
   </div>
 
