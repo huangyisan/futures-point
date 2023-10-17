@@ -13,7 +13,7 @@
       >
         <el-table-column prop="ratio" label="比例" fixed/>
         <el-table-column prop="price" label="价格" />
-        <el-table-column prop="direction" label="方向" />
+<!--        <el-table-column prop="direction" label="方向" />-->
       </el-table>
     </el-col>
       <el-col :span="2">
@@ -32,7 +32,7 @@
 
         <el-table-column prop="ratio" label="比例" fixed/>
         <el-table-column prop="price" label="价格" />
-        <el-table-column prop="direction" label="方向" />
+<!--        <el-table-column prop="direction" label="方向" />-->
       </el-table>
     </el-col>
     </el-row>
