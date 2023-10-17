@@ -37,7 +37,7 @@
     </el-col>
     </el-row>
     <el-divider direction="horizontal" />
-    <button @click="printSide">1111</button>
+<!--    <button @click="printSide">1111</button>-->
 <!--  </el-card>-->
 </template>
 

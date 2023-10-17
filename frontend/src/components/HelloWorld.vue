@@ -49,13 +49,6 @@ function calculate() {
 <template>
   <div class="common-layout">
     <el-container>
-      <el-header>
-        <el-row class="center">
-          <el-col :span="24">
-
-          </el-col>
-        </el-row>
-      </el-header>
       <el-main>
         <el-row class="center">
           <el-col :span="24">
