@@ -60,11 +60,8 @@ function calculate() {
             </div>
             <el-divider direction="horizontal" />
           </el-col>
-          <el-col :span="1" :offset="18">
-            <el-input-number v-model="point.price" placeholder="请输入价格" :min="0" type="number" size="small"/>
-          </el-col>
-          <el-col :span="1" :offset="2">
-            <el-button type="primary" @click="calculate" size="small">计算</el-button>
+          <el-col :span="1" :offset="20">
+            <el-input-number controls-position="right" class="item" v-model="point.price" @change="calculate" :min="0" type="number" size="small"/>
           </el-col>
         </el-row>
       </el-main>
@@ -77,4 +74,5 @@ function calculate() {
 .center {
   text-align: center;
 }
+
 </style>
